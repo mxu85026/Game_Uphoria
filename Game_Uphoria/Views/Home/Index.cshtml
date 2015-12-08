@@ -1,0 +1,73 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
+<head>
+    <title>GameUphoria</title>
+    <base href="/" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/metro.min.css" rel="stylesheet" />
+    <link href="~/Content/metro-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/css/sidebar_style.css" rel="stylesheet" />
+    <link href="~/Content/MetroJs.min.css" rel="stylesheet" />
+
+    
+
+</head>
+<body ng-controller="AccountController as account">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Game Uphoria</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Online Store</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a class="btn btn-default btn-outline btn-circle collapsed" href="/login" ng-show="!account.isLoggedIn()" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-default btn-outline btn-circle collapsed" href="/" ng-click="account.logout()" ng-show="account.isLoggedIn()" aria-expanded="false" aria-controls="nav-collapse2">logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-collapse -->
+        @*</div>*@<!-- /.container -->
+    </nav><!-- /.navbar -->
+    @*<div>
+            <a href="/">Home</a> /
+            <a href="/about">About</a> /
+            <a href="/login" ng-show="!account.isLoggedIn()">login</a>
+            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">logout</a>
+        </div>*@
+
+    <ng-view></ng-view>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/MetroJs.min.js"></script>
+    <script src="~/ngApp/app.js"></script>
+    <script src="~/ngApp/controllers/controllers.js"></script>
+    <script src="~/ngApp/services/services.js"></script>
+
+
+
+    <script src="~/ngApp/controllers/accountController.js"></script>
+    <script src="~/ngApp/services/accountService.js"></script>
+</body>
+</html>

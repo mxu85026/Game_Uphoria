@@ -1,0 +1,57 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-color:black;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.infoBlock {
+    z-index: 50;
+    position: absolute;
+    right: 30px;
+    left: auto;
+    bottom: 30px;
+    width: 500px;
+    overflow: hidden;
+    padding: 15px 20px 20px 20px;
+    color: #eee;
+    background: #000;
+    background-color: rgba(0,0,0,0.75);
+    font-size: 14px;
+    line-height: 21px;
+}
+.main-text
+{
+    position: absolute;
+    top: 50px;
+    width: 96.66666666666666%;
+    color: #FFF;
+}
+.btn-min-block
+{
+    min-width: 170px;
+    line-height: 26px;
+}
+
+.container
+{
+    width: 80%;
+}
+
+.cover {
+  object-fit:contain;
+  width: 1200px;
+  height: 500px;
+}
