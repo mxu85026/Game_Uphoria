@@ -1,4 +1,5 @@
 ﻿using Game_Uphoria.Models;
+using Game_Uphoria.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,22 +12,16 @@ namespace Game_Uphoria.API
 {
     public class OrdersController : ApiController
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
 
-        public IHttpActionResult GetOrders()
+        private IOrderService _service;
+        public OrdersController(IOrderService service)
         {
-            var orders = _db.Order.Include(p => p.Products).Include(c => c.Customers).ToList();
-            return Ok(orders);
+            this._service = service;
         }
-        private IOrder _repo;
-        public OrdersController(IOrder repo)
+        public IHttpActionResult Get()
         {
-            this._repo = repo;
-        }
-        public IEnumerable<Orders> Get()
-        {
-            var order = _repo.ListOrders();
-            return order;
+            var supplier = _service.ListOrders();
+            return Ok();
         }
         public IHttpActionResult Post(Orders order)
         {
@@ -34,19 +29,18 @@ namespace Game_Uphoria.API
             {
                 return BadRequest(this.ModelState);
             }
-            _repo.saveOrder(order);
+            _service.SaveOrder(order);
             return Created("", order);
         }
         public IHttpActionResult Delete(int id)
         {
-            _repo.Delete(id);
+            _service.Delete(id);
             return Ok();
         }
-
         public IHttpActionResult Get(int id)
         {
-            var order = _repo.Find(id);
-            if(order == null)
+            var order = _service.Get(id);
+            if (order == null)
             {
                 return NotFound();
             }

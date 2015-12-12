@@ -17,20 +17,18 @@ textarea {
     max-width: 280px;
 }
 
-.infoBlock {
-    z-index: 50;
-    position: absolute;
-    right: 30px;
-    left: auto;
-    bottom: 30px;
-    width: 500px;
-    overflow: hidden;
-    padding: 15px 20px 20px 20px;
-    color: #eee;
-    background: #000;
-    background-color: rgba(0,0,0,0.75);
-    font-size: 14px;
-    line-height: 21px;
+.fixedContainer {
+    top:60px;
+    left: 25%;
+    position:absolute;
+    height: 500px;
+    width: 350px;
+    background-color:black;
+    background:rgba(0,0,0,0.7);
+    color: white;
+}
+.homeContainer {
+    top:0px;
 }
 .main-text
 {
@@ -50,8 +48,128 @@ textarea {
     width: 80%;
 }
 
-.cover {
-  object-fit:contain;
-  width: 1200px;
-  height: 500px;
+.navbar{
+        margin-bottom: 0px;
 }
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background-color:#222;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 18px;
+  font-weight: 400;
+  
+}
+.profile-usermenu ul li a span{
+  margin-left:20px;
+  padding-bottom:20px;
+  
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  
+}
+
+.profile-usermenu ul li a:hover {
+  color: #F5DEB3;
+  background-color: #ffaf4d;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a:focus {
+  color: white;
+  background-color: darkorange;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: white;
+  min-height: 460px;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 20px 15px;
+}
+
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+

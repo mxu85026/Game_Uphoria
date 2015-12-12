@@ -28,6 +28,6 @@ namespace Game_Uphoria.Models
         public string ShipZip { get; set; }
 
         public ICollection<Product> Products { get; set; }
-        public ICollection<Customer> Customers { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; }
     }
 }

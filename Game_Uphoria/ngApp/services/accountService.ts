@@ -140,9 +140,12 @@
             private $q: ng.IQService,
             private $http: ng.IHttpService,
             private $window: ng.IWindowService
+           
         ) { }
 
-    }
+    
+   
+}
 
     angular.module('MyApp').service('accountService', AccountService);
 }

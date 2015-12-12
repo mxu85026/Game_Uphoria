@@ -1,4 +1,5 @@
 ﻿using Game_Uphoria.Models;
+using Game_Uphoria.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,15 @@ namespace Game_Uphoria.API
 {
     public class SuppliersController : ApiController
     {
-        private ISupplier _repo;
-        public SuppliersController(ISupplier repo)
+        private ISupplierService _service;
+        public SuppliersController(ISupplierService service)
         {
-            this._repo = repo;
+            this._service = service;
         }
-        public IEnumerable<Suppliers> Get()
+        public IHttpActionResult Get()
         {
-            var supplier = _repo.ListSupplier();
-            return supplier;
+            var supplier = _service.ListSupplier();
+            return Ok();
         }
         public IHttpActionResult Post(Suppliers supplier)
         {
@@ -26,17 +27,17 @@ namespace Game_Uphoria.API
             {
                 return BadRequest(this.ModelState);
             }
-            _repo.SaveSupplier(supplier);
+            _service.SaveSupplier(supplier);
             return Created("", supplier);
         }
         public IHttpActionResult Delete(int id)
         {
-            _repo.Delete(id);
+            _service.Delete(id);
             return Ok();
         }
         public IHttpActionResult Get(int id)
         {
-            var supplier = _repo.Find(id);
+            var supplier = _service.Get(id);
             if(supplier == null)
             {
                 return NotFound();

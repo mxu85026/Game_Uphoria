@@ -1,100 +1,209 @@
 var MyApp;
 (function (MyApp) {
-    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap']).config(function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/', {
-            templateUrl: '/ngApp/views/home.html',
+    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.router']).config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+            url: '/',
             controller: MyApp.Controllers.HomeController,
+            templateUrl: '/ngApp/views/home.html',
+            controllerAs: 'controller',
+            abstract: true
+        })
+            .state('home.panelDefault', {
+            url: '',
+            controller: MyApp.Controllers.PanelDefaultController,
+            templateUrl: '/ngApp/views/panelDefault.html',
             controllerAs: 'controller'
         })
-            .when('/events', {
-            templateUrl: '/ngApp/views/events.html',
+            .state('events', {
+            url: '/events',
             controller: MyApp.Controllers.EventsController,
+            templateUrl: '/ngApp/views/events.html',
             controllerAs: 'controller'
         })
-            .when('/store', {
-            templateUrl: '/ngApp/views/store.html',
+            .state('store', {
+            url: '/store',
             controller: MyApp.Controllers.OnlineStoreController,
+            templateUrl: '/ngApp/views/events.html',
             controllerAs: 'controller'
         })
-            .when('/contact', {
-            templateUrl: 'ngApp/views/events.html',
+            .state('contact', {
+            url: '/contact',
             controller: MyApp.Controllers.ContactController,
+            templateUrl: '/ngApp/views/contact.html',
             controllerAs: 'controller'
         })
-            .when('/adminDashboard', {
-            templateUrl: 'ngApp/views/adminDashboard.html',
+            .state('dashboard', {
+            url: '/dashboard',
+            controller: MyApp.Controllers.DashboardController,
+            templateUrl: '/ngApp/views/dashboard.html'
+        })
+            .state('dashboard.adminDashboard', {
+            url: '/adminDashboard',
             controller: MyApp.Controllers.AdminDashboardController,
-            controllerAs: 'controller'
+            templateUrl: '/ngApp/views/adminDashboard.html',
+            controllerAs: 'controller',
+            abstract: true
         })
-            .when('/addProduct', {
-            templateUrl: 'ngApp/views/addProduct.html',
+            .state('dashboard.adminDashboard.addProduct', {
+            url: 'addProduct',
             controller: MyApp.Controllers.AddProductController,
+            templateUrl: '/ngApp/views/addProduct.html',
             controllerAs: 'controller'
         })
-            .when('/editProduct/:id', {
-            templateUrl: 'ngApp/views/editProduct.html',
+            .state('dashboard.adminDashboard.editProduct', {
+            url: 'editProduct/:id',
             controller: MyApp.Controllers.EditProductController,
+            templateUrl: '/ngApp/views/editProduct.html',
             controllerAs: 'controller'
         })
-            .when('/deleteProduct/:id', {
-            templateUrl: 'ngApp/views/deleteProduct.html',
+            .state('dashboard.adminDashboard.deleteProduct', {
+            url: 'deleteProduct/:id',
             controller: MyApp.Controllers.DeleteProductController,
+            templateUrl: '/ngApp/views/editProduct.html',
             controllerAs: 'controller'
         })
-            .when('/addUser', {
-            templateUrl: 'ngApp/views/addUser.html',
+            .state('dashboard.adminDashboard.addUser', {
+            url: 'addUser',
             controller: MyApp.Controllers.AddUserController,
+            templateUrl: '/ngApp/views/addUser.html',
             controllerAs: 'controller'
         })
-            .when('/editUser/:id', {
-            templateUrl: 'ngApp/views/editUser.html',
+            .state('dashboard.adminDashboard.editUser', {
+            url: 'editUser/:id',
             controller: MyApp.Controllers.EditUserController,
+            templateUrl: '/ngApp/views/editUser.html',
             controllerAs: 'controller'
         })
-            .when('/deleteUser/:id', {
-            templateUrl: 'ngApp/views/deleteUser.html',
+            .state('dashboard.adminDashboard.deleteUser', {
+            url: 'deleteUser/:id',
             controller: MyApp.Controllers.DeleteUserController,
+            templateUrl: '/ngApp/views/deleteUser.html',
             controllerAs: 'controller'
         })
-            .when('/userDashboard', {
-            templateUrl: 'ngApp/views/userDashboard.html',
+            .state('dashboard.userDashboard', {
+            url: '/userDashboard',
             controller: MyApp.Controllers.UserDashboardController,
+            templateUrl: '/ngApp/views/userDashboard.html',
+            controllerAs: 'controller',
+            abstract: true
+        })
+            .state('dashboard.adminDashboard.adminOverview', {
+            url: '',
+            controller: MyApp.Controllers.AdminOverviewController,
+            templateUrl: '/ngApp/views/adminOverview.html',
             controllerAs: 'controller'
         })
-            .when('/editProfile/:id', {
-            templateUrl: 'ngApp/views/editProfile.html',
+            .state('dashboard.adminDashboard.productList', {
+            url: '/productList',
+            controller: MyApp.Controllers.ProductListController,
+            templateUrl: '/ngApp/views/productList.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.supplierList', {
+            url: '/supplierList',
+            controller: MyApp.Controllers.SupplierListController,
+            templateUrl: '/ngApp/views/supplierList.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.addSupplier', {
+            url: '/addSupplier',
+            controller: MyApp.Controllers.AddSupplierController,
+            templateUrl: '/ngApp/views/addSupplier.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.editSupplier', {
+            url: '/editSupplier/:id',
+            controller: MyApp.Controllers.EditSupplierController,
+            templateUrl: '/ngApp/views/editSupplier.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.deleteSupplier', {
+            url: '/deleteSupplier/:id',
+            controller: MyApp.Controllers.DeleteSupplierController,
+            templateUrl: '/ngApp/views/deleteSupplier.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.userList', {
+            url: '/userList',
+            controller: MyApp.Controllers.UserListController,
+            templateUrl: '/ngApp/views/userList.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.accountDetail', {
+            url: '/accountDetail/:id',
+            controller: MyApp.Controllers.AccountDetailController,
+            templateUrl: '/ngApp/views/accountDetail.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.userDashboard.accountDetail', {
+            url: '/accountDetail/:id',
+            controller: MyApp.Controllers.AccountDetailController,
+            templateUrl: '/ngApp/views/accountDetail.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.adminDashboard.inventory', {
+            url: 'inventory',
+            controller: MyApp.Controllers.InventoryController,
+            templateUrl: '/ngApp/views/inventory.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.userDashboard.userOverview', {
+            url: '/:id',
+            controller: MyApp.Controllers.UserOverviewController,
+            templateUrl: '/ngApp/views/userOverview.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.userDashboard.myEvents', {
+            url: '/myEvents/:id',
+            controller: MyApp.Controllers.MyEventsController,
+            templateUrl: '/ngApp/views/myEvents.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.userDashboard.help', {
+            url: '/help',
+            controller: MyApp.Controllers.HelpController,
+            templateUrl: '/ngApp/views/help.html',
+            controllerAs: 'controller'
+        })
+            .state('dashboard.userDashboard.editProfile', {
+            url: '/editProfile/:id',
             controller: MyApp.Controllers.EditProfileController,
+            templateUrl: '/ngApp/views/editProfile.html',
             controllerAs: 'controller'
         })
-            .when('/login', {
-            templateUrl: '/ngApp/views/login.html',
+            .state('home.login', {
+            url: 'login',
             controller: MyApp.Controllers.LoginController,
+            templateUrl: '/ngApp/views/login.html',
             controllerAs: 'controller'
         })
-            .when('/register', {
-            templateUrl: '/ngApp/views/register.html',
+            .state('home.register', {
+            url: 'register',
             controller: MyApp.Controllers.RegisterController,
+            templateUrl: '/ngApp/views/register.html',
             controllerAs: 'controller'
         })
-            .when('/externalLogin', {
-            templateUrl: '/ngApp/views/externalLogin.html',
+            .state('home.externalLogin', {
+            url: 'externalLogin',
             controller: MyApp.Controllers.ExternalLoginController,
+            templateUrl: '/ngApp/views/externalLogin.html',
             controllerAs: 'controller'
         })
-            .when('/externalRegister', {
-            templateUrl: '/ngApp/views/externalRegister.html',
+            .state('home.externalRegister', {
+            url: 'externalRegister',
             controller: MyApp.Controllers.ExternalRegisterController,
+            templateUrl: '/ngApp/views/externalRegister.html',
             controllerAs: 'controller'
         })
-            .when('/confirmEmail', {
-            templateUrl: '/ngApp/views/confirmEmail.html',
+            .state('confirmEmail', {
+            url: '/confirmEmail',
             controller: MyApp.Controllers.ConfirmEmailController,
+            templateUrl: '/ngApp/views/confirmEmail.html',
             controllerAs: 'controller'
-        })
-            .otherwise({
-            redirectTo: '/ngApp/views/notFound.html'
         });
+        $urlRouterProvider
+            .otherwise('/ngApp/views/notFound.html');
         $locationProvider.html5Mode(true);
     });
     angular.module('MyApp').factory('authInterceptor', function ($q, $window, $location) {

@@ -17,13 +17,23 @@ namespace Game_Uphoria.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Address { get; set; }
+
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        public int ZipCode { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public IDbSet<Orders> Order { get; set; }
         public IDbSet<Product> Products { get; set; }
-        public IDbSet<Customer> Customer { get; set; }
         public IDbSet<Suppliers> Supplier { get; set; }
         public IDbSet<Carousel> Banners { get; set; }
 

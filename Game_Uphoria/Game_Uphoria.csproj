@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +51,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi.WebHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.WebHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -113,6 +129,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -174,13 +194,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\CarouselController.cs" />
-    <Compile Include="API\CustomerController.cs" />
     <Compile Include="API\OrdersController.cs" />
     <Compile Include="API\ProductsController.cs" />
     <Compile Include="API\SuppliersController.cs" />
+    <Compile Include="API\UserController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -226,32 +247,64 @@
     <Compile Include="Migrations\201512081711335_b.Designer.cs">
       <DependentUpon>201512081711335_b.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512081859585_addCarousel.cs" />
+    <Compile Include="Migrations\201512081859585_addCarousel.Designer.cs">
+      <DependentUpon>201512081859585_addCarousel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512091812580_uiRoute.cs" />
+    <Compile Include="Migrations\201512091812580_uiRoute.Designer.cs">
+      <DependentUpon>201512091812580_uiRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512110153491_routing.cs" />
+    <Compile Include="Migrations\201512110153491_routing.Designer.cs">
+      <DependentUpon>201512110153491_routing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512110309162_routing2.cs" />
+    <Compile Include="Migrations\201512110309162_routing2.Designer.cs">
+      <DependentUpon>201512110309162_routing2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512111746514_routing12.cs" />
+    <Compile Include="Migrations\201512111746514_routing12.Designer.cs">
+      <DependentUpon>201512111746514_routing12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512111806142_routing122.cs" />
+    <Compile Include="Migrations\201512111806142_routing122.Designer.cs">
+      <DependentUpon>201512111806142_routing122.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512120125027_ab.cs" />
+    <Compile Include="Migrations\201512120125027_ab.Designer.cs">
+      <DependentUpon>201512120125027_ab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Carousel.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerRepository.cs" />
-    <Compile Include="Models\ICustomer.cs" />
+    <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\IOrder.cs" />
-    <Compile Include="Models\IProduct.cs" />
-    <Compile Include="Models\ISupplier.cs" />
     <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\OrdersRepository.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductRepository.cs" />
-    <Compile Include="Models\SupplierRepository.cs" />
     <Compile Include="Models\Suppliers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\CarouselService.cs" />
+    <Compile Include="Services\ApplicationUserService.cs" />
+    <Compile Include="Services\IApplicationUserService.cs" />
+    <Compile Include="Services\ICarouselService.cs" />
+    <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\IProductService.cs" />
+    <Compile Include="Services\ISupplierService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro-icons.min.css" />
     <Content Include="Content\metro-responsive.css" />
@@ -264,12 +317,35 @@
     <Content Include="Content\metro.min.css" />
     <Content Include="Content\MetroJs.css" />
     <Content Include="Content\MetroJs.min.css" />
+    <Content Include="Content\sidebar_style.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GitIgnore\.gitignore" />
     <Content Include="Global.asax" />
-    <Content Include="ngApp\views\about.html" />
+    <Content Include="ngApp\views\accountDetail.html" />
+    <Content Include="ngApp\views\addProduct.html" />
+    <Content Include="ngApp\views\addSupplier.html" />
+    <Content Include="ngApp\views\addUser.html" />
+    <Content Include="ngApp\views\adminDashboard.html" />
+    <Content Include="ngApp\views\adminOverview.html" />
+    <Content Include="ngApp\views\contact.html" />
+    <Content Include="ngApp\views\dashboard.html" />
+    <Content Include="ngApp\views\deleteProduct.html" />
+    <Content Include="ngApp\views\deleteSupplier.html" />
+    <Content Include="ngApp\views\deleteUser.html" />
+    <Content Include="ngApp\views\editProduct.html" />
+    <Content Include="ngApp\views\editProfile.html" />
+    <Content Include="ngApp\views\editSupplier.html" />
+    <Content Include="ngApp\views\editUser.html" />
+    <Content Include="ngApp\views\events.html" />
+    <Content Include="ngApp\views\help.html" />
+    <Content Include="ngApp\views\inventory.html" />
+    <Content Include="ngApp\views\myEvents.html" />
+    <Content Include="ngApp\views\panelDefault.html" />
+    <Content Include="ngApp\views\productList.html" />
+    <Content Include="ngApp\views\store.html" />
     <Content Include="ngApp\views\confirmEmail.html" />
     <Content Include="ngApp\views\externalLogin.html" />
     <Content Include="ngApp\views\externalRegister.html" />
@@ -277,17 +353,25 @@
     <Content Include="ngApp\views\login.html" />
     <Content Include="ngApp\views\notFound.html" />
     <Content Include="ngApp\views\register.html" />
+    <Content Include="ngApp\views\supplierList.html" />
+    <Content Include="ngApp\views\userDashboard.html" />
+    <Content Include="ngApp\views\userList.html" />
+    <Content Include="ngApp\views\userOverview.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularUI\ui-router.js" />
+    <Content Include="Scripts\AngularUI\ui-router.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -313,6 +397,11 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="GitIgnore\Secret.config" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -357,6 +446,7 @@
     <TypeScriptCompile Include="ngApp\controllers\controllers.ts" />
     <TypeScriptCompile Include="ngApp\services\accountService.ts" />
     <TypeScriptCompile Include="ngApp\services\services.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui-router\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -365,6 +455,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\ui-router-extras\ui-router-extras.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -375,6 +466,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512081711335_b.resx">
       <DependentUpon>201512081711335_b.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081859585_addCarousel.resx">
+      <DependentUpon>201512081859585_addCarousel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512091812580_uiRoute.resx">
+      <DependentUpon>201512091812580_uiRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512110153491_routing.resx">
+      <DependentUpon>201512110153491_routing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512110309162_routing2.resx">
+      <DependentUpon>201512110309162_routing2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512111746514_routing12.resx">
+      <DependentUpon>201512111746514_routing12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512111806142_routing122.resx">
+      <DependentUpon>201512111806142_routing122.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512120125027_ab.resx">
+      <DependentUpon>201512120125027_ab.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

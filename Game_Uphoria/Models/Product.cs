@@ -11,6 +11,8 @@ namespace Game_Uphoria.Models
 
         public string Name { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public int QuantityPerUnit { get; set; }
 
         public decimal UnitPrice { get; set; }

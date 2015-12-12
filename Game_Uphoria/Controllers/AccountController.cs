@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Game_Uphoria.Models;
 using Game_Uphoria.Providers;
 using Game_Uphoria.Results;
+using Game_Uphoria.Services;
 
 namespace Game_Uphoria.Controllers
 {
@@ -23,6 +24,8 @@ namespace Game_Uphoria.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        
+
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -35,6 +38,7 @@ namespace Game_Uphoria.Controllers
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            
         }
 
         public ApplicationUserManager UserManager
@@ -323,6 +327,7 @@ namespace Game_Uphoria.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
+           
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -336,7 +341,7 @@ namespace Game_Uphoria.Controllers
             {
                 return GetErrorResult(result);
             }
-
+            
 
             // Uncomment to send an email confirmation
             //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -407,7 +412,7 @@ namespace Game_Uphoria.Controllers
 
             base.Dispose(disposing);
         }
-
+        
         #region Helpers
 
         private IAuthenticationManager Authentication

@@ -20,11 +20,12 @@
             return this.accountService.getExternalLogins();
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) {
+        constructor(private accountService: MyApp.Services.AccountService, private $state: ng.ui.IStateService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
         }
+
     }
 
     angular.module('MyApp').controller('AccountController', AccountController);
@@ -36,13 +37,13 @@
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/dashboard');
             }).catch((results) => {
                 this.validationMessages = results;
             });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) { }
+        constructor(private accountService: MyApp.Services.AccountService, private $state: ng.ui.IStateService, private $location: ng.ILocationService) { }
     }
 
 
@@ -52,13 +53,13 @@
 
         public register() {
             this.accountService.register(this.registerUser).then(() => {
-                this.$location.path('/login');
+                this.$state.go('home.login');
             }).catch((results) => {
                 this.validationMessages = results;
             });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) { }
+        constructor(private accountService: MyApp.Services.AccountService, private $state: ng.ui.IStateService) { }
     }
 
 
@@ -89,13 +90,13 @@
         public register() {
             this.accountService.registerExternal(this.registerUser.email, this.externalAccessToken)
                 .then((result) => {
-                    this.$location.path('/login');
+                    this.$state.go('home.login');
                 }).catch((result) => {
                     this.validationMessages = result;
                 });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) {
+        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService, private $state: ng.ui.IStateService) {
             let response = accountService.parseOAuthResponse($location.hash());
             this.externalAccessToken = response['access_token'];
         }
@@ -109,13 +110,13 @@
             private accountService: MyApp.Services.AccountService,
             private $http: ng.IHttpService,
             private $routeParams: ng.route.IRouteParamsService,
-            private $location: ng.ILocationService
+            private $state: ng.ui.IStateService
         ) {
             let userId = $routeParams['userId'];
             let code = $routeParams['code'];
             accountService.confirmEmail(userId, code)
                 .then((result) => {
-                    this.$location.path('/');
+                    this.$state.go('home');
                 }).catch((result) => {
                     this.validationMessages = result;
                 });

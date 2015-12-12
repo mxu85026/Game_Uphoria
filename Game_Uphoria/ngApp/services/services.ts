@@ -49,5 +49,4 @@
         }
     }
     angular.module('MyApp').service('userService', UserService);
-
 }

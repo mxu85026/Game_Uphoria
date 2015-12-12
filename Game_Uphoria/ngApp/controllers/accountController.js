@@ -3,10 +3,10 @@ var MyApp;
     var Controllers;
     (function (Controllers) {
         var AccountController = (function () {
-            function AccountController(accountService, $location) {
+            function AccountController(accountService, $state) {
                 var _this = this;
                 this.accountService = accountService;
-                this.$location = $location;
+                this.$state = $state;
                 this.getExternalLogins().then(function (results) {
                     _this.externalLogins = results;
                 });
@@ -28,14 +28,15 @@ var MyApp;
         Controllers.AccountController = AccountController;
         angular.module('MyApp').controller('AccountController', AccountController);
         var LoginController = (function () {
-            function LoginController(accountService, $location) {
+            function LoginController(accountService, $state, $location) {
                 this.accountService = accountService;
+                this.$state = $state;
                 this.$location = $location;
             }
             LoginController.prototype.login = function () {
                 var _this = this;
                 this.accountService.login(this.loginUser).then(function () {
-                    _this.$location.path('/');
+                    _this.$location.path('/dashboard');
                 }).catch(function (results) {
                     _this.validationMessages = results;
                 });
@@ -44,14 +45,14 @@ var MyApp;
         })();
         Controllers.LoginController = LoginController;
         var RegisterController = (function () {
-            function RegisterController(accountService, $location) {
+            function RegisterController(accountService, $state) {
                 this.accountService = accountService;
-                this.$location = $location;
+                this.$state = $state;
             }
             RegisterController.prototype.register = function () {
                 var _this = this;
                 this.accountService.register(this.registerUser).then(function () {
-                    _this.$location.path('/login');
+                    _this.$state.go('home.login');
                 }).catch(function (results) {
                     _this.validationMessages = results;
                 });
@@ -80,9 +81,10 @@ var MyApp;
         })();
         Controllers.ExternalLoginController = ExternalLoginController;
         var ExternalRegisterController = (function () {
-            function ExternalRegisterController(accountService, $location) {
+            function ExternalRegisterController(accountService, $location, $state) {
                 this.accountService = accountService;
                 this.$location = $location;
+                this.$state = $state;
                 var response = accountService.parseOAuthResponse($location.hash());
                 this.externalAccessToken = response['access_token'];
             }
@@ -90,7 +92,7 @@ var MyApp;
                 var _this = this;
                 this.accountService.registerExternal(this.registerUser.email, this.externalAccessToken)
                     .then(function (result) {
-                    _this.$location.path('/login');
+                    _this.$state.go('home.login');
                 }).catch(function (result) {
                     _this.validationMessages = result;
                 });
@@ -99,17 +101,17 @@ var MyApp;
         })();
         Controllers.ExternalRegisterController = ExternalRegisterController;
         var ConfirmEmailController = (function () {
-            function ConfirmEmailController(accountService, $http, $routeParams, $location) {
+            function ConfirmEmailController(accountService, $http, $routeParams, $state) {
                 var _this = this;
                 this.accountService = accountService;
                 this.$http = $http;
                 this.$routeParams = $routeParams;
-                this.$location = $location;
+                this.$state = $state;
                 var userId = $routeParams['userId'];
                 var code = $routeParams['code'];
                 accountService.confirmEmail(userId, code)
                     .then(function (result) {
-                    _this.$location.path('/');
+                    _this.$state.go('home');
                 }).catch(function (result) {
                     _this.validationMessages = result;
                 });

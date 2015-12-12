@@ -1,0 +1,57 @@
+﻿
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <h2>Store Management</h2>
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Admin1
+                        </div>
+                        <div class="profile-usertitle-job">
+                            General Manager
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li>
+                                <a ui-sref="dashboard.adminDashboard.adminOverview">
+                                    <i class="fa fa-home fa-2x"></i>
+                                    <span>Overview</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ui-sref="dashboard.adminDashboard.userList">
+                                    <i class="fa fa-user fa-2x"></i>
+                                    <span>Customers</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ui-sref="dashboard.adminDashboard.productList">
+                                    <i class="fa fa-barcode fa-2x"></i>
+                                    <span>Inventory</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ui-sref="dashboard.adminDashboard.supplierList">
+                                    <i class="fa fa-truck fa-2x"></i>
+                                    <span>Suppliers</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content" ui-view>
+
+                </div>
+            </div>
+        </div>
+    </div>
