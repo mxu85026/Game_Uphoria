@@ -16,7 +16,7 @@
         }
 
         constructor($resource: angular.resource.IResourceService) {
-            this.ProductResource = $resource('/api/product/:id');
+            this.ProductResource = $resource('/api/products/:id');
         }
 
         public delete(item) {
@@ -32,7 +32,7 @@
             return this.UserResource.query();
         }
 
-        public get(id: number) {
+        public get(id: string) {
             return this.UserResource.get({ id: id });
         }
 

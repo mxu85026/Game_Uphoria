@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201512120125027_ab.Designer.cs">
       <DependentUpon>201512120125027_ab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512141627022_23.cs" />
+    <Compile Include="Migrations\201512141627022_23.Designer.cs">
+      <DependentUpon>201512141627022_23.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -344,7 +348,6 @@
     <Content Include="ngApp\views\inventory.html" />
     <Content Include="ngApp\views\myEvents.html" />
     <Content Include="ngApp\views\panelDefault.html" />
-    <Content Include="ngApp\views\productList.html" />
     <Content Include="ngApp\views\store.html" />
     <Content Include="ngApp\views\confirmEmail.html" />
     <Content Include="ngApp\views\externalLogin.html" />
@@ -487,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512120125027_ab.resx">
       <DependentUpon>201512120125027_ab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141627022_23.resx">
+      <DependentUpon>201512141627022_23.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

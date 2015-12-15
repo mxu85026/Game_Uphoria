@@ -48,19 +48,19 @@ var MyApp;
             function InventoryController(productService, $location) {
                 this.productService = productService;
                 this.$location = $location;
-                this.product = productService.listItem();
+                this.products = productService.listItem();
             }
             return InventoryController;
         })();
         Controllers.InventoryController = InventoryController;
         var AddProductController = (function () {
-            function AddProductController(productService, $location) {
+            function AddProductController(productService, $state) {
                 this.productService = productService;
-                this.$location = $location;
+                this.$state = $state;
             }
             AddProductController.prototype.save = function () {
                 var _this = this;
-                this.productService.save(this.newProduct).then(function () { _this.$location.path('/inventory'); });
+                this.productService.save(this.newProduct).then(function () { _this.$state.go('dashboard.adminDashboard.inventory'); });
             };
             return AddProductController;
         })();
@@ -106,15 +106,15 @@ var MyApp;
         })();
         Controllers.AddUserController = AddUserController;
         var EditUserController = (function () {
-            function EditUserController(userService, $location, $routeParams) {
+            function EditUserController(userService, $state, $stateParams) {
                 this.userService = userService;
-                this.$location = $location;
-                this.$routeParams = $routeParams;
-                this.userToEdit = userService.get($routeParams['id']);
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                this.userToEdit = userService.get($stateParams['id']);
             }
-            EditUserController.prototype.save = function () {
+            EditUserController.prototype.edit = function () {
                 var _this = this;
-                this.userService.save(this.userToEdit).then(function () { _this.$location.path('/userList'); });
+                this.userService.save(this.userToEdit).then(function () { _this.$state.go('dashboard.adminDashboard.accountDetail', { id: _this.userToEdit.id }); });
             };
             return EditUserController;
         })();
@@ -165,7 +165,11 @@ var MyApp;
         })();
         Controllers.UserOverviewController = UserOverviewController;
         var AccountDetailController = (function () {
-            function AccountDetailController() {
+            function AccountDetailController(userService, $state, $stateParams) {
+                this.userService = userService;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                this.user = userService.get($stateParams['id']);
             }
             return AccountDetailController;
         })();
@@ -188,12 +192,6 @@ var MyApp;
             return AdminOverviewController;
         })();
         Controllers.AdminOverviewController = AdminOverviewController;
-        var ProductListController = (function () {
-            function ProductListController() {
-            }
-            return ProductListController;
-        })();
-        Controllers.ProductListController = ProductListController;
         var SupplierListController = (function () {
             function SupplierListController() {
             }

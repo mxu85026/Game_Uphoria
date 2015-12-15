@@ -1,1 +1,90 @@
-﻿
+﻿<div class="container">
+    <h1>Profile</h1>
+    <hr>
+
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-3">
+            <div class="text-center" ng-submit="controller.edit()">
+                <img src="{{controller.userToEdit.avatarUrl}}" class="avatar img-circle" alt="avatar">
+            </div>
+        </div>
+
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fa fa-coffee"></i>
+                This is an <strong>.alert</strong>. Use this to show important messages to the user.
+            </div>
+            <h3>Customer Info</h3>
+
+            <form class="form-horizontal" role="form" ng-submit="controller.edit()">
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">First Name:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.userToEdit.firstName" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Last Name:</label>
+                    <div class="col-lg-8 detail-data">
+                       <input ng-model="controller.userToEdit.lastName"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Username:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.userToEdit.userName" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Address:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model = "controller.userToEdit.address" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">City:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.userToEdit.city" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">State:</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model = "controller.userToEdit.state" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Zip Code</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model = "controller.userToEdit.zipCode" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Phone Number:</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model = "controller.userToEdit.phoneNumber" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email:</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model = "controller.userToEdit.email" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <span></span>
+                        <a ui-sref="dashboard.adminDashboard.accountDetail({id:controller.userToEdit.id})"><input type="submit" class="btn btn-info" value="Cancel"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

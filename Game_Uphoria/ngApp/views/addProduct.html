@@ -1,1 +1,94 @@
-﻿
+﻿<div class="container">
+    <h1>Add a New Product</h1>
+    <hr>
+
+    <div class="row">
+        <form class="form-horizontal" ng-submit="controller.save()">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img ng-src="{{controller.newProduct.imageUrl}}" class="img-thumbnail" alt="productImg"/>
+                    <input class="btn btn-finish" type="file" ng-model="controller.newProduct.imageUrl" />
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">x</a>
+                    <i class="fa fa-coffee"></i>
+                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div>
+                
+
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Name:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.newProduct.name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Quantity Per Unit:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.newProduct.quantityPerUnit" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Unit Price:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.newProduct.unitPrice" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Units in Stock:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.newProduct.unitsInStock" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Units on Order:</label>
+                    <div class="col-lg-8 detail-data">
+                        <input ng-model="controller.newProduct.unitsOnOrder" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Discontinued:</label>
+                    <div class="col-md-8 detail-data">
+                        <input type="checkbox" ng-model="controller.newProduct.discontinued" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Zip Code</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model="controller.userToEdit.zipCode" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Phone Number:</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model="controller.userToEdit.phoneNumber" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email:</label>
+                    <div class="col-md-8 detail-data">
+                        <input ng-model="controller.userToEdit.email" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <span></span>
+                        <a ui-sref="dashboard.adminDashboard.accountDetail({id:controller.userToEdit.id})"><input type="submit" class="btn btn-info" value="Cancel"></a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -19,8 +19,8 @@ namespace Game_Uphoria.API
         }
         public IHttpActionResult Get()
         {
-            var supplier = _service.ListProducts();
-            return Ok();
+            var product = _service.ListProducts();
+            return Ok(product);
         }
         public IHttpActionResult Post(Product product)
         {

@@ -44,24 +44,28 @@
     }
 
     export class InventoryController {
-        public product;
+        public products;
 
         constructor(
             private productService: MyApp.Services.ProductService,
             private $location: angular.ILocationService
+            
         ) {
-            this.product = productService.listItem();
+            this.products = productService.listItem();
         }
     }
 
     export class AddProductController {
         public newProduct;
+
+      
         public save() {
-            this.productService.save(this.newProduct).then(() => { this.$location.path('/inventory') });
+            this.productService.save(this.newProduct).then(() => { this.$state.go('dashboard.adminDashboard.inventory') });
         }
         constructor(
             private productService: MyApp.Services.ProductService,
-            private $location: angular.ILocationService
+            private $state: angular.ui.IStateService,
+            
         ) { }
     }
 
@@ -110,15 +114,16 @@
     export class EditUserController {
         public userToEdit;
 
-        public save() {
-            this.userService.save(this.userToEdit).then(() => { this.$location.path('/userList')});
+        public edit() {
+            this.userService.save(this.userToEdit).then(() => { this.$state.go('dashboard.adminDashboard.accountDetail', { id: this.userToEdit.id }) });
         }
         constructor(
             private userService: MyApp.Services.UserService,
-            private $location: angular.ILocationService,
-            private $routeParams: ng.route.IRouteParamsService
+            private $state: angular.ui.IStateService,
+            private $stateParams: ng.ui.IStateService
         ) {
-            this.userToEdit = userService.get($routeParams['id']);
+           
+            this.userToEdit = userService.get($stateParams['id']);
         }
 
     }
@@ -169,6 +174,15 @@
         
     }
     export class AccountDetailController {
+        public user;
+
+        constructor(
+            private userService: MyApp.Services.UserService,
+            private $state: angular.ui.IStateService,
+            private $stateParams: ng.ui.IStateParamsService
+        ) {
+            this.user = userService.get($stateParams['id']);
+        }
 
     }
     export class MyEventsController {
@@ -178,9 +192,6 @@
 
     }
     export class AdminOverviewController {
-
-    }
-    export class ProductListController {
 
     }
     export class SupplierListController {

@@ -171,5 +171,21 @@ textarea {
 .navbar-inverse .navbar-nav>li>a {
     color: #fff;
 }
-
-
+.detail-data{
+    top: 7px;
+}
+.add-button{
+    right:20px;
+}
+.img-thumbnail{
+    width:150px;
+}
+.container{
+    width:95%
+}
+td{
+    text-align:center;
+}
+.table tfoot td, .table tfoot th, .table thead td, .table thead th {
+    text-align:center;
+}

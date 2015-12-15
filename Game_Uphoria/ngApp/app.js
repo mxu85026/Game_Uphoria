@@ -46,13 +46,13 @@ var MyApp;
             abstract: true
         })
             .state('dashboard.adminDashboard.addProduct', {
-            url: 'addProduct',
+            url: '/addProduct',
             controller: MyApp.Controllers.AddProductController,
             templateUrl: '/ngApp/views/addProduct.html',
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.editProduct', {
-            url: 'editProduct/:id',
+            url: '/editProduct/:id',
             controller: MyApp.Controllers.EditProductController,
             templateUrl: '/ngApp/views/editProduct.html',
             controllerAs: 'controller'
@@ -64,19 +64,19 @@ var MyApp;
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.addUser', {
-            url: 'addUser',
+            url: '/addUser',
             controller: MyApp.Controllers.AddUserController,
             templateUrl: '/ngApp/views/addUser.html',
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.editUser', {
-            url: 'editUser/:id',
+            url: '/editUser/:id',
             controller: MyApp.Controllers.EditUserController,
             templateUrl: '/ngApp/views/editUser.html',
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.deleteUser', {
-            url: 'deleteUser/:id',
+            url: '/deleteUser/:id',
             controller: MyApp.Controllers.DeleteUserController,
             templateUrl: '/ngApp/views/deleteUser.html',
             controllerAs: 'controller'
@@ -92,12 +92,6 @@ var MyApp;
             url: '',
             controller: MyApp.Controllers.AdminOverviewController,
             templateUrl: '/ngApp/views/adminOverview.html',
-            controllerAs: 'controller'
-        })
-            .state('dashboard.adminDashboard.productList', {
-            url: '/productList',
-            controller: MyApp.Controllers.ProductListController,
-            templateUrl: '/ngApp/views/productList.html',
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.supplierList', {
@@ -143,7 +137,7 @@ var MyApp;
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.inventory', {
-            url: 'inventory',
+            url: '/inventory',
             controller: MyApp.Controllers.InventoryController,
             templateUrl: '/ngApp/views/inventory.html',
             controllerAs: 'controller'

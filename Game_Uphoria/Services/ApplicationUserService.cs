@@ -41,6 +41,7 @@ namespace Game_Uphoria.Services
                 original.ZipCode = user.ZipCode;
                 original.PhoneNumber = user.PhoneNumber;
                 original.Email = user.Email;
+                original.AvatarUrl = user.AvatarUrl;
                 _repo.SaveChanges();
             }
         }

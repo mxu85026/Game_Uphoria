@@ -4,7 +4,7 @@ var MyApp;
     (function (Services) {
         var ProductService = (function () {
             function ProductService($resource) {
-                this.ProductResource = $resource('/api/product/:id');
+                this.ProductResource = $resource('/api/products/:id');
             }
             ProductService.prototype.listItem = function () {
                 return this.ProductResource.query();
