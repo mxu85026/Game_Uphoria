@@ -8,6 +8,7 @@
         }
 
         public get(id: number) {
+            
             return this.ProductResource.get({ id: id });
         }
 
@@ -19,8 +20,8 @@
             this.ProductResource = $resource('/api/products/:id');
         }
 
-        public delete(item) {
-            return this.ProductResource.delete({ id: item.id }).$promise;
+        public delete(id) {
+            return this.ProductResource.delete({ id: id }).$promise;
         }
     }
     angular.module('MyApp').service('productService', ProductService);
@@ -33,6 +34,7 @@
         }
 
         public get(id: string) {
+
             return this.UserResource.get({ id: id });
         }
 

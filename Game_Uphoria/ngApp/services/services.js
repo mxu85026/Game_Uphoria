@@ -15,8 +15,8 @@ var MyApp;
             ProductService.prototype.save = function (item) {
                 return this.ProductResource.save(item).$promise;
             };
-            ProductService.prototype.delete = function (item) {
-                return this.ProductResource.delete({ id: item.id }).$promise;
+            ProductService.prototype.delete = function (id) {
+                return this.ProductResource.delete({ id: id }).$promise;
             };
             return ProductService;
         })();
@@ -44,3 +44,4 @@ var MyApp;
         angular.module('MyApp').service('userService', UserService);
     })(Services = MyApp.Services || (MyApp.Services = {}));
 })(MyApp || (MyApp = {}));
+//# sourceMappingURL=services.js.map

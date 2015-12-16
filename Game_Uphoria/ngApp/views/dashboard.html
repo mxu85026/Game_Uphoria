@@ -1,1 +1,7 @@
-﻿<div ui-view></div>
+﻿<div>
+    <div ng-show="controller.isAdmin()" ui-sref="dashboard.adminDashboard">
+    </div>
+    <div ng-show="!controller.isAdmin()" ui-sref="dashboard.userDashboard({id:controller.user.id})">
+    </div>
+
+</div>

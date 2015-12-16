@@ -2,13 +2,17 @@
     <h1>Profile</h1>
     <hr>
     <div class="row">
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-8">
+                <a ui-sref="dashboard.userDashboard.editProfile({id:controller.user.id})"><input type="button" class="btn btn-warning" value="Edit Profile"></a>
+
+            </div>
+        </div>
         <!-- left column -->
         <div class="col-md-3">
             <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-                <h6>Upload a different photo...</h6>
-
-                <input type="file" class="form-control">
+                <img src="{{controller.user.avatarUrl}}" class="avatar img-circle" alt="avatar">
             </div>
         </div>
 
@@ -23,64 +27,58 @@
 
             <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Full Name:</label>
-                    <div class="col-lg-8">
-                        {{controller.user.firstName}}{{controller.user.lastName}}
+                    <label class="col-lg-4 control-label">Full Name:</label>
+                    <div class="col-lg-8 detail-data">
+                        {{controller.user.firstName}} {{controller.user.lastName}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Username:</label>
-                    <div class="col-lg-8">
-
+                    <label class="col-lg-4 control-label">Username:</label>
+                    <div class="col-lg-8 detail-data">
+                        {{controller.user.userName}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Address:</label>
-                    <div class="col-lg-8">
+                    <label class="col-lg-4 control-label">Address:</label>
+                    <div class="col-lg-8 detail-data">
                         {{controller.user.address}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">City:</label>
-                    <div class="col-lg-8">
+                    <label class="col-lg-4 control-label">City:</label>
+                    <div class="col-lg-8 detail-data">
                         {{controller.user.city}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label">State:</label>
-                    <div class="col-md-8">
+                    <label class="col-md-4 control-label">State:</label>
+                    <div class="col-md-8 detail-data">
                         {{controller.user.state}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Zip Code</label>
-                    <div class="col-md-8">
+                    <label class="col-md-4 control-label">Zip Code</label>
+                    <div class="col-md-8 detail-data">
                         {{controller.user.zipCode}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Phone Number:</label>
-                    <div class="col-md-8">
+                    <label class="col-md-4 control-label">Phone Number:</label>
+                    <div class="col-md-8 detail-data">
                         {{controller.user.phoneNumber}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Email:</label>
-                    <div class="col-md-8">
+                    <label class="col-md-4 control-label">Email:</label>
+                    <div class="col-md-8 detail-data">
                         {{controller.user.email}}
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <input type="button" class="btn btn-warning" value="Edit">
-                        <span></span>
-                        <input type="reset" class="btn btn-danger" value="Delete">
-                    </div>
-                </div>
+                
             </form>
         </div>
     </div>
 </div>
+

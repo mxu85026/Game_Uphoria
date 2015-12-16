@@ -1,1 +1,7 @@
-﻿
+﻿<div class="modal-body">
+    <h2>Are you sure you'd like to delete {{modal.productToDelete.name}}?</h2>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="modal.delete()">Delete</button>
+    <button class="btn btn-primary" ng-click="modal.cancel()">Cancel</button>
+</div>

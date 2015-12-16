@@ -1,6 +1,9 @@
 ﻿namespace MyApp {
 
-    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.router']).config(($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, $stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) => {
+    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.router', 'angular-filepicker']).config(($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, $stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider, filepickerProvider) => {
+        filepickerProvider.setKey('ADzzRjwKbQ12PFKWYWRpKz')
+        
+        
         $stateProvider
             .state('home', {
                 url: '/',
@@ -36,7 +39,8 @@
             .state('dashboard', {
                 url: '/dashboard', 
                 controller: MyApp.Controllers.DashboardController,
-                templateUrl: '/ngApp/views/dashboard.html'
+                templateUrl: '/ngApp/views/dashboard.html',
+                controllerAs: 'controller'
             })
             .state('dashboard.adminDashboard', {
                 url: '/adminDashboard',
@@ -58,9 +62,9 @@
                 controllerAs: 'controller'
             })
             .state('dashboard.adminDashboard.deleteProduct', {
-                url: 'deleteProduct/:id',
+                url: '/deleteProduct/:id',
                 controller: MyApp.Controllers.DeleteProductController,
-                templateUrl: '/ngApp/views/editProduct.html',
+                templateUrl: '/ngApp/views/deleteProduct.html',
                 controllerAs: 'controller'
             })
             .state('dashboard.adminDashboard.addUser', {

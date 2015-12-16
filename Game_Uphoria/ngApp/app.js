@@ -1,6 +1,7 @@
 var MyApp;
 (function (MyApp) {
-    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.router']).config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+    angular.module('MyApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.router', 'angular-filepicker']).config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, filepickerProvider) {
+        filepickerProvider.setKey('ADzzRjwKbQ12PFKWYWRpKz');
         $stateProvider
             .state('home', {
             url: '/',
@@ -36,7 +37,8 @@ var MyApp;
             .state('dashboard', {
             url: '/dashboard',
             controller: MyApp.Controllers.DashboardController,
-            templateUrl: '/ngApp/views/dashboard.html'
+            templateUrl: '/ngApp/views/dashboard.html',
+            controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard', {
             url: '/adminDashboard',
@@ -58,9 +60,9 @@ var MyApp;
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.deleteProduct', {
-            url: 'deleteProduct/:id',
+            url: '/deleteProduct/:id',
             controller: MyApp.Controllers.DeleteProductController,
-            templateUrl: '/ngApp/views/editProduct.html',
+            templateUrl: '/ngApp/views/deleteProduct.html',
             controllerAs: 'controller'
         })
             .state('dashboard.adminDashboard.addUser', {
@@ -222,3 +224,4 @@ var MyApp;
         $httpProvider.interceptors.push('authInterceptor');
     });
 })(MyApp || (MyApp = {}));
+//# sourceMappingURL=app.js.map

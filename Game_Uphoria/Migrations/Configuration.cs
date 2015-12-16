@@ -58,6 +58,7 @@ namespace Game_Uphoria.Migrations
                     Email = "admin@gameuphoria.com"
                 };
                 userManager.Create(user, "Secret123!");
+
                 userManager.AddClaim(user.Id, new Claim("IsAdmin", "true"));
             }
         }

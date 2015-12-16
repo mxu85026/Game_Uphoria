@@ -12,14 +12,14 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in controller.users">
+                        <td>{{user.firstName}} {{user.lastName}}</td>
                         <td>
                             <a ui-sref="dashboard.adminDashboard.accountDetail({id:user.id})">
-                                {{user.firstName}} {{user.lastName}}
+                                {{user.email}}
                             </a>
                         </td>
-                        <td>{{user.email}}</td>
                         <td>{{user.phoneNumber}}</td>
-                        <td><i class="fa fa-edit fa-2x"></i>  <i class="fa fa-remove fa-2x"></i></td>
+                        <td><a ui-sref="dashboard.adminDashboard.editUser({id:user.id})"><i class="fa fa-edit fa-2x"></i></a>  <a ui-sref="dashboard.adminDashboard.deleteUser({id:user.id})"><i class="fa fa-remove fa-2x"></i></a></td>
                         <!--<td>
                             <span class="label label-success">Active</span>
                         </td>-->

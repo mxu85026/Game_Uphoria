@@ -189,3 +189,7 @@ td{
 .table tfoot td, .table tfoot th, .table thead td, .table thead th {
     text-align:center;
 }
+.img-circle{
+    width:150px;
+    height:150px;
+}

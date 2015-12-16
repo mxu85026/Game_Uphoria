@@ -6,7 +6,8 @@
         <!-- left column -->
         <div class="col-md-3">
             <div class="text-center" ng-submit="controller.edit()">
-                <img src="{{controller.userToEdit.avatarUrl}}" class="avatar img-circle" alt="avatar">
+                <img ng-src="{{controller.file.url}}" class="avatar img-circle" alt="avatar">
+                <button ng-click="controller.pickFile()">Upload a new Image</button>
             </div>
         </div>
 
